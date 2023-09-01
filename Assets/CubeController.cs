@@ -43,6 +43,16 @@ public class CubeController : MonoBehaviour
     void OnCollisionEnter2D (Collision2D collision)
     {
         //1回音を鳴らす
-        soundEffect.PlayOneShot(sound);
+        //soundEffect.PlayOneShot(sound);
+
+        //ユニティちゃんに当たった時は音量をゼロにする
+        if (collision.gameObject.tag == "UnityChanTag")
+        {
+            GetComponent<AudioSource> ().volume = 0;
+        }
+        else
+        {
+            soundEffect.PlayOneShot(sound);
+        }
     }
 }
